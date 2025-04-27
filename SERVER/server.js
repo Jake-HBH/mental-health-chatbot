@@ -9,7 +9,10 @@ import { HumanMessage, AIMessage, SystemMessage, ToolMessage } from "@langchain/
 const app = express();
 
 const corsOptions = {
-  origin: "https://jake-hbh.github.io/mental-health-chatbot/", // 👈 Replace with your actual GitHub Pages URL
+  origin: [
+    "https://jake-hbh.github.io",
+    "https://mental-health-chatbot-psi.vercel.app"
+  ],
   methods: ["GET", "POST"],
   allowedHeaders: ["Content-Type"],
 };
