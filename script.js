@@ -40,7 +40,7 @@ sendButton.addEventListener("click", async () => {
     addMessageToChat("user", userMessage);
 
     try {
-        const response = await fetch("http://localhost:3000/ask", {
+        const response = await fetch("http://localhost:3000/chat-query", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

@@ -7,7 +7,15 @@ import { HumanMessage, AIMessage, SystemMessage, ToolMessage } from "@langchain/
 
 
 const app = express();
-app.use(cors());
+
+const corsOptions = {
+  origin: "https://jake-hbh.github.io/mental-health-chatbot/", // 👈 Replace with your actual GitHub Pages URL
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type"],
+};
+
+app.use(cors(corsOptions));
+
 app.use(express.json());
 
 const embeddings = new AzureOpenAIEmbeddings({
@@ -67,7 +75,7 @@ app.get("/", async (req, res) => {
   res.json({ message: "Server is working" });
 });
 
-app.post("/ask", async (req, res) => {
+app.post("/chat-query", async (req, res) => {
   const incomingMessages = req.body.messages;
 
   if (!Array.isArray(incomingMessages) || incomingMessages.length === 0) {
