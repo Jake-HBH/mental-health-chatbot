@@ -11,7 +11,9 @@ const app = express();
 const corsOptions = {
   origin: [
     "https://jake-hbh.github.io",
-    "https://mental-health-chatbot-psi.vercel.app"
+    "https://mental-health-chatbot-psi.vercel.app",
+    "https://mental-health-chatbot-1217x89jw-jake-hbhs-projects.vercel.app"
+
   ],
   methods: ["GET", "POST"],
   allowedHeaders: ["Content-Type"],
