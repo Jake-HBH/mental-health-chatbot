@@ -7,20 +7,7 @@ import { HumanMessage, AIMessage, SystemMessage, ToolMessage } from "@langchain/
 
 
 const app = express();
-
-const corsOptions = {
-  origin: [
-    "https://jake-hbh.github.io",
-    "https://mental-health-chatbot-psi.vercel.app",
-    "https://mental-health-chatbot-1217x89jw-jake-hbhs-projects.vercel.app"
-
-  ],
-  methods: ["GET", "POST"],
-  allowedHeaders: ["Content-Type"],
-};
-
-app.use(cors(corsOptions));
-
+app.use(cors());
 app.use(express.json());
 
 const embeddings = new AzureOpenAIEmbeddings({
@@ -80,7 +67,7 @@ app.get("/", async (req, res) => {
   res.json({ message: "Server is working" });
 });
 
-app.post("/chat-query", async (req, res) => {
+app.post("/ask", async (req, res) => {
   const incomingMessages = req.body.messages;
 
   if (!Array.isArray(incomingMessages) || incomingMessages.length === 0) {

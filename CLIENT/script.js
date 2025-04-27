@@ -1,13 +1,9 @@
 const conversationHistory = [];
 
-const BACKEND_URL =
-    window.location.hostname === "localhost"
-        ? "http://localhost:3000"
-        : "https://your-render-url.onrender.com";
 
 async function speakMessage(text) {
     try {
-        const response = await fetch(`${BACKEND_URL}/speak`, {
+        const response = await fetch("http://localhost:3000/speak", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -28,6 +24,7 @@ async function speakMessage(text) {
     }
 }
 
+
 const sendButton = document.getElementById("sendButton");
 const messageInput = document.getElementById("message");
 const chatMessages = document.getElementById("chatMessages");
@@ -35,7 +32,6 @@ const chatMessages = document.getElementById("chatMessages");
 sendButton.addEventListener("click", async () => {
     const userMessage = messageInput.value.trim();
     conversationHistory.push({ role: "user", content: userMessage });
-
     if (!userMessage) {
         alert("Please enter a message!");
         return;
@@ -44,7 +40,7 @@ sendButton.addEventListener("click", async () => {
     addMessageToChat("user", userMessage);
 
     try {
-        const response = await fetch(`${BACKEND_URL}/chat-query`, {
+        const response = await fetch("http://localhost:3000/ask", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -70,13 +66,14 @@ sendButton.addEventListener("click", async () => {
 
             const chunk = decoder.decode(value, { stream: true });
             botMessage += chunk;
+
             aiMessageDiv.textContent += chunk;
         }
 
         console.log("Full bot response:", botMessage);
         conversationHistory.push({ role: "assistant", content: botMessage });
 
-        if (document.getElementById("voiceToggle")?.checked) {
+        if (document.getElementById("voiceToggle").checked) {
             speakMessage(botMessage);
         }
     } catch (error) {
