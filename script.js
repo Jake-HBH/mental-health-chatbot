@@ -3,7 +3,7 @@ const conversationHistory = [];
 const BACKEND_URL =
     window.location.hostname === "localhost"
         ? "http://localhost:3000"
-        : "https://mental-health-chatbot-psi.vercel.app";
+        : "https://your-render-url.onrender.com";
 
 async function speakMessage(text) {
     try {
