@@ -14,7 +14,7 @@ const embeddings = new AzureOpenAIEmbeddings({
   azureOpenAIApiEmbeddingsDeploymentName: process.env.AZURE_EMBEDDING_DEPLOYMENT_NAME,
 });
 
-const vectorStore = await FaissStore.load("12rulesDb", embeddings);
+const vectorStore = await FaissStore.load("mentalhealthDb", embeddings);
 
 function coinFlipFunction({ optionA, optionB }) {
   const choice = Math.random() < 0.5 ? optionA : optionB;
@@ -58,7 +58,7 @@ const model = new AzureChatOpenAI({
 }).bindTools([coinFlipTool]);
 
 async function searchDocs(prompt) {
-  const relevantDocs = await vectorStore.similaritySearch(prompt, 3); // Retrieve top 3 relevant documents
+  const relevantDocs = await vectorStore.similaritySearch(prompt, 3);
   const context = relevantDocs.map((doc) => doc.pageContent).join("\n\n");
   return context;
 }
