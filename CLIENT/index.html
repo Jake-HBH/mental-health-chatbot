@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="chatContainer" class="chat-container">
+        <h1>Chat</h1>
+
+        <label style="margin-top: 10px;">
+            <input type="checkbox" id="voiceToggle" checked />
+            Enable Voice
+        </label>
+
+        <div id="chatMessages" class="chat-messages"></div>
+
+        <div class="input-container">
+            <input type="text" id="message" placeholder="Type your message here..." />
+            <button id="sendButton">Send</button>
+        </div>
+
+        <div id="response" class="response-box"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
