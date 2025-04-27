@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "embed": "node --env-file=.env --watch embeddings.js",
-    "dev": "node --env-file=.env --watch server.js",
-    "habit": "node --env-file=.env --watch 12rulesquestion.js"
+    "dev": "node --env-file=.env server.js",
+    "health": "node --env-file=.env --watch healthquestion.js"
   },
   "keywords": [],
   "author": "",
